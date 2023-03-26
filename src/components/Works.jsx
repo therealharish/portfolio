@@ -75,7 +75,7 @@ const Works = () => {
           My personal collection of stupid little projects, some of them you might have seen before, and some of them I could not find a place to show...
         </motion.p>
       </div>
-      <div className = "mt-20 flex flex-wrap ">
+      <div className = "mt-20 flex flex-wrap gap-5 ">
         {projects.map((project, index) => (
           <ProjectCard key = {`project-${index}`}
             index = {index}

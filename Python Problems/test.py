@@ -1,40 +1,27 @@
 class Solution:
-    def minNumberOfFrogs(self, croakOfFrogs: str) -> int:
-        l = len(croakOfFrogs)
-        count = 0
-        ans = 0
-        d = {'c':0, 'r':0, 'o':0, 'a':0, 'k':0}
+    def maxProfit(self, prices: List[int]) -> int:
+        n = len(prices)
+        dp1 = {}
+        dp2 = {}
         
-        def validate():
-            for i in d:
-                for j in d:
-                    if i==j:
-                        continue
-                    else:
-                        if d[i] < d[j]:
-                            return 0
-            return 1
+        def f1(i, count):
+            if i == n-1:
+                return 0
+            if (i, count) in dp1:
+                return dp1[(i, count)]
+            dontBuy = f1(i+1, count)
+            buy = f2(i+1, count)-prices[i]
+            dp1[(i, count)] = max(dontBuy, buy)
+            return dp1[(i, count)]
         
-        for i in croakOfFrogs:
-            if i == 'c':
-                count+=1
-                d[i]+=1
-            elif i == 'k':
-                ans = max(ans, count)
-                count -= 1
-                d[i]+=1
-            else:
-                d[i]+=1
-            if not validate:
-                return -1
+        def f2(i, count):
+            if i == n-1:
+                return prices[n-1]
+            if (i, count) in dp2:
+                return dp2[i]
+            dontSell = f2(i+1, count)
+            sell = f1(i+1, count+1) + prices[i]
+            dp2[(i, count)] = max(dontSell, sell)
+            return dp2[i]
         
-        if count!=0:
-            return -1
-        
-        
-        return ans
-            
-                
-            
-            
-        
+        return f1(0)
