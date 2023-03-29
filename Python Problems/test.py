@@ -1,27 +1,15 @@
 class Solution:
-    def maxProfit(self, prices: List[int]) -> int:
-        n = len(prices)
-        dp1 = {}
-        dp2 = {}
+    def uncommonFromSentences(self, s1: str, s2: str) -> List[str]:
+        l1 = s1.split(" ")
+        l2 = s2.split(" ")
+        d1 = Counter(l1)
+        d2 = Counter(l2)
+        ans = []
+        for i in l1:
+            if i not in d2 and d1[i] == 1:
+                ans.append(i)
+        for i in l2:
+            if i not in d1 and d2[i] == 1:
+                ans.append(i)
+        return ans
         
-        def f1(i, count):
-            if i == n-1:
-                return 0
-            if (i, count) in dp1:
-                return dp1[(i, count)]
-            dontBuy = f1(i+1, count)
-            buy = f2(i+1, count)-prices[i]
-            dp1[(i, count)] = max(dontBuy, buy)
-            return dp1[(i, count)]
-        
-        def f2(i, count):
-            if i == n-1:
-                return prices[n-1]
-            if (i, count) in dp2:
-                return dp2[i]
-            dontSell = f2(i+1, count)
-            sell = f1(i+1, count+1) + prices[i]
-            dp2[(i, count)] = max(dontSell, sell)
-            return dp2[i]
-        
-        return f1(0)
