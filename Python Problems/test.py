@@ -1,27 +1,24 @@
 class Solution:
-    def maxProfit(self, prices: List[int]) -> int:
-        n = len(prices)
-        dp1 = {}
-        dp2 = {}
+    def distance(self, nums: List[int]) -> List[int]:
         
-        def f1(i, count):
-            if i == n-1:
-                return 0
-            if (i, count) in dp1:
-                return dp1[(i, count)]
-            dontBuy = f1(i+1, count)
-            buy = f2(i+1, count)-prices[i]
-            dp1[(i, count)] = max(dontBuy, buy)
-            return dp1[(i, count)]
+        adj = defaultdict(list)
         
-        def f2(i, count):
-            if i == n-1:
-                return prices[n-1]
-            if (i, count) in dp2:
-                return dp2[i]
-            dontSell = f2(i+1, count)
-            sell = f1(i+1, count+1) + prices[i]
-            dp2[(i, count)] = max(dontSell, sell)
-            return dp2[i]
+        for i, num in enumerate(nums):
+            adj[num].append(i)
         
-        return f1(0)
+        arr = []
+        for index, i in enumerate(nums):
+            if len(adj[i]) == 1:
+                arr.append(0)
+                
+            else:
+                a = 0
+                for j in adj[i]:
+                    a += abs(index - j)
+                arr.append(a)
+        
+        return arr
+        
+            
+# optimized solution
+

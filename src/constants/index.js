@@ -23,6 +23,7 @@ import {
     jobit,
     tripguide,
     threejs,
+    thebastionclub,
   } from "../assets";
 
   
@@ -123,16 +124,15 @@ import {
   
   const experiences = [
     {
-      title: "React.js Developer",
-      company_name: "Starbucks",
-      icon: starbucks,
+      title: "Club President",
+      company_name: "The Bastion Club, PSIT",
+      icon: thebastionclub,
       iconBg: "#383E56",
-      date: "March 2020 - April 2021",
+      date: "June 2021 - Present",
       points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
+        "Responsible for holding out events and leading a team.",
+        "Successfully led a team to hold more than 7 events.",
+        "Organised fundraisers collecting more than INR 10,000 across events.",
       ],
     },
     {
