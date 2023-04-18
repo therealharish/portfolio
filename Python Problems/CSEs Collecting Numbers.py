@@ -13,4 +13,5 @@ for i in range(2, n+1):
     prev = d[i]
 print(count+1)
     
+# done
     
