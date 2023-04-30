@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 class Solution:
     def distance(self, nums: List[int]) -> List[int]:
         
@@ -21,4 +22,34 @@ class Solution:
         
             
 # optimized solution
+=======
+arr = [30, 11, 43, 32, 8, 15]
+k = 3
 
+def prefixSumOfLastKElement(arr):
+    
+    ans = [0] * len(arr)
+    s = 0
+    for i in range(k):
+        s += arr[i]
+    
+    ans[k-1] = s
+    minsofar = s/k
+    index = 0
+    leave = 0
+    for i in range(k, len(arr)):
+        print(minsofar)
+        ans[i] = (ans[i-1] + arr[i] - arr[leave])
+        if ans[i]/k < minsofar:
+            minsofar = ans[i]/k
+            index = i
+        leave += 1
+    print(ans)
+    return (index-k+1, index)
+
+print(prefixSumOfLastKElement(arr))
+>>>>>>> Stashed changes
+
+
+    
+    
