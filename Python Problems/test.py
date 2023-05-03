@@ -1,2 +1,11 @@
-li = [[ i*j for j in range (4)] for i in range (3)]
-print(li)
+def find(arr):
+    
+    m = min(arr)
+    ans = arr.index(m)
+    
+    return (m, ans)
+
+m, ans = find([1,2,3,4,5])
+print(m)
+print(ans)
+
