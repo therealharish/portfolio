@@ -23,7 +23,6 @@ import {
     jobit,
     tripguide,
     threejs,
-    thebastionclub,
   } from "../assets";
 
   
@@ -126,7 +125,7 @@ import {
     {
       title: "Club President",
       company_name: "The Bastion Club, PSIT",
-      icon: thebastionclub,
+      icon: null,
       iconBg: "#383E56",
       date: "June 2021 - Present",
       points: [
